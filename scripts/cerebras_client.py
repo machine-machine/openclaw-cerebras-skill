@@ -22,7 +22,7 @@ def get_config():
     """Load config from env or file."""
     config = {
         "api_key": os.getenv("CEREBRAS_API_KEY"),
-        "model": os.getenv("CEREBRAS_MODEL", "glm-4.7"),
+        "model": os.getenv("CEREBRAS_MODEL", "zai-glm-4.7"),
         "base_url": "https://api.cerebras.ai/v1",
     }
     
@@ -48,10 +48,11 @@ class CerebrasClient:
     """Async client for Cerebras Cloud inference."""
     
     MODELS = {
-        "glm-4.7": "glm-4.7",  # Coding specialist
+        "zai-glm-4.7": "zai-glm-4.7",  # Coding specialist (default)
         "llama-3.3-70b": "llama-3.3-70b",
-        "llama-3.1-8b": "llama-3.1-8b",
-        "qwen-3-32b": "qwen3-32b",
+        "llama3.1-8b": "llama3.1-8b",
+        "qwen-3-32b": "qwen-3-32b",
+        "gpt-oss-120b": "gpt-oss-120b",  # OpenAI's open model
     }
     
     def __init__(self, api_key: str = None, model: str = None):
