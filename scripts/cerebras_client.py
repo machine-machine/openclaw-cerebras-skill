@@ -21,9 +21,9 @@ except ImportError:
 def get_config():
     """Load config from env or file."""
     config = {
-        "api_key": os.getenv("CEREBRAS_API_KEY"),
-        "model": os.getenv("CEREBRAS_MODEL", "zai-glm-4.7"),
-        "base_url": "https://api.cerebras.ai/v1",
+        "api_key": os.getenv("OPENROUTER_API_KEY") or os.getenv("CEREBRAS_API_KEY"),
+        "model": os.getenv("CEREBRAS_MODEL", os.getenv("OR_CEREBRAS_MODEL", "qwen/qwen3-235b-a22b")),
+        "base_url": "https://openrouter.ai/api/v1",
     }
     
     # Try config file
